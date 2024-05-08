@@ -1,13 +1,11 @@
-require('dotenv').config()
+import 'dotenv/config'
 
 import { Sequelize } from 'sequelize'
-import configs from '../config/database'
+import configs from '../config/database.js'
 
 const env = process.env.NODE_ENV || 'development'
 const config = (configs)[env]
 
-const db = new Sequelize({
+export const db = new Sequelize({
   ...config,
 })
-
-export default db

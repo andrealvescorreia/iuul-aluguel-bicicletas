@@ -1,15 +1,6 @@
 import { Model, DataTypes, UUIDV4 } from "sequelize";
 
 export class Funcionario extends Model {
-  nome;
-  idade;
-  funcao;
-  cpf;
-  email;
-  senha;
-  confirmacaoSenha;
-  matricula;
-
   static initModel(sequelize) {
     Funcionario.init(
       {
@@ -55,7 +46,8 @@ export class Funcionario extends Model {
         },
       },
       {
-        sequelize,
+        sequelize: sequelize,
+        timestamps: false,
       }
     );
 

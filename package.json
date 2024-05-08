@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
+  "type": "module",
   "scripts": {
     "prepackage": "rm -rf dist/ && mkdir dist",
     "package": "npm-prepare-dist && cp -r src/* dist/ && cp deploy.bat dist/ && cp .env dist/",

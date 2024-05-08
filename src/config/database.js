@@ -1,6 +1,6 @@
-require("dotenv").config();
+import 'dotenv/config'
 
-module.exports = {
+export default {
   development: {
     dialect: "postgres",
     database: process.env.DATABASE_NAME || "bicicletario",

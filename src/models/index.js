@@ -1,8 +1,8 @@
-import { CartaoDeCredito } from "./CartaoDeCredito";
-import { Ciclista } from "./Ciclista";
-import { Funcionario } from "./Funcionario";
-import { Aluguel } from "./Aluguel";
-import { Devolucao } from "./Devolucao";
+import { CartaoDeCredito } from "./CartaoDeCredito.js";
+import { Ciclista } from "./Ciclista.js";
+import { Funcionario } from "./Funcionario.js";
+import { Aluguel } from "./Aluguel.js";
+import { Devolucao } from "./Devolucao.js";
 
 export { Ciclista, CartaoDeCredito, Funcionario, Aluguel, Devolucao };
 
@@ -19,17 +19,14 @@ export function initModels(sequelize) {
   })
 
   CartaoDeCredito.belongsTo(Ciclista, {
-    as: 'ciclista',
     foreignKey: 'id'
   })
 
   Aluguel.hasOne(Ciclista, {
-    as: 'ciclista',
     foreignKey: 'id'
   })
 
   Devolucao.hasOne(Ciclista, {
-    as: 'ciclista',
     foreignKey: 'id'
   })
 
