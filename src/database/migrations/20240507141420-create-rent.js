@@ -35,6 +35,10 @@ module.exports = {
       ciclista: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        references: {
+          model: 'Ciclista',
+          key: 'id'
+        }
       },
       trancaInicio: {
         allowNull: false,

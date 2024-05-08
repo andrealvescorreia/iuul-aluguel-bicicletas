@@ -1,5 +1,7 @@
 "use strict";
 
+const { DataTypes } = require("sequelize");
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -33,6 +35,10 @@ module.exports = {
       ciclista: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        references: {
+          model: 'Ciclista',
+          key: 'id'
+        }
       },
     });
   },

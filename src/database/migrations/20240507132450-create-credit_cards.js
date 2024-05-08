@@ -28,6 +28,14 @@ module.exports = {
       cvv: {
         type: DataTypes.CHAR(3),
         allowNull: false
+      },
+      ciclista: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Ciclista',
+          key: 'id'
+        }
       }
     })
   },
