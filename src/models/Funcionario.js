@@ -35,10 +35,6 @@ export class Funcionario extends Model {
           allowNull: false,
           type: DataTypes.STRING,
         },
-        confirmacaoSenha: {
-          allowNull: false,
-          type: DataTypes.STRING,
-        },
         matricula: {
           allowNull: false,
           type: DataTypes.INTEGER,
