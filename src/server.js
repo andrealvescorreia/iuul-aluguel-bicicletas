@@ -7,6 +7,7 @@ import { initModels } from "./models/index.js";
 const router = Router();
 const app = express();
 
+await db.authenticate();
 initModels(db);
 
 router.get("/hello", async (req, res) => {

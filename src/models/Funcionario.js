@@ -14,9 +14,9 @@ export class Funcionario extends Model {
           allowNull: false,
           type: DataTypes.STRING,
         },
-        idade: {
+        nascimento: {
           allowNull: false,
-          type: DataTypes.INTEGER,
+          type: DataTypes.DATEONLY,
         },
         funcao: {
           allowNull: false,
@@ -32,10 +32,6 @@ export class Funcionario extends Model {
           unique: true,
         },
         senha: {
-          allowNull: false,
-          type: DataTypes.STRING,
-        },
-        confirmacaoSenha: {
           allowNull: false,
           type: DataTypes.STRING,
         },

@@ -16,9 +16,9 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      idade: {
+      nascimento: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.DATEONLY,
       },
       funcao: {
         allowNull: false,
@@ -34,10 +34,6 @@ module.exports = {
         unique: true,
       },
       senha: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      confirmacaoSenha: {
         allowNull: false,
         type: DataTypes.STRING,
       },
