@@ -1,0 +1,5 @@
+{
+  "name": "grupo-1-aluguel",
+  "script": "server.js",
+  "instances": "1"
+}
