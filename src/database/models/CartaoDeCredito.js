@@ -1,8 +1,8 @@
 import { Model, DataTypes } from "sequelize";
 
-export class Aluguel extends Model {
+export class CartaoDeCredito extends Model {
   static initModel(sequelize) {
-    Aluguel.init(
+    CartaoDeCredito.init(
       {
         id: {
           allowNull: false,
@@ -10,46 +10,40 @@ export class Aluguel extends Model {
           primaryKey: true,
           type: DataTypes.INTEGER,
         },
-        bicicleta: {
+        nomeTitular: {
+          type: DataTypes.STRING,
           allowNull: false,
-          type: DataTypes.INTEGER,
+          field: "nomeTitular",
         },
-        horaInicio: {
+        numero: {
+          type: DataTypes.STRING,
           allowNull: false,
-          type: DataTypes.DATE,
         },
-        trancaFim: {
+        validade: {
+          type: DataTypes.DATEONLY,
           allowNull: false,
-          type: DataTypes.INTEGER,
         },
-        horaFim: {
+        cvv: {
+          type: DataTypes.CHAR(3),
           allowNull: false,
-          type: DataTypes.DATE,
-        },
-        cobranca: {
-          allowNull: false,
-          type: DataTypes.INTEGER,
         },
         ciclista: {
-          allowNull: false,
           type: DataTypes.INTEGER,
+          allowNull: false,
           references: {
             model: "Ciclista",
             key: "id",
           },
           onUpdate: "CASCADE",
         },
-        trancaInicio: {
-          allowNull: false,
-          type: DataTypes.INTEGER,
-        },
       },
       {
         sequelize: sequelize,
         timestamps: false,
+        freezeTableName: true,
       }
     );
 
-    return Aluguel;
+    return CartaoDeCredito;
   }
 }

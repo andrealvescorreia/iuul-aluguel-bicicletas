@@ -1,18 +1,21 @@
 import 'dotenv/config'
 
-import express, { Router } from 'express';
+import express from 'express';
 import { db } from "./database/db.js"
-import { initModels } from "./models/index.js";
+import { initModels } from "./database/models/index.js";
+import router from "./router.js";
 
-const router = Router();
 const app = express();
+
+//parse do body (string para JSON)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 await db.authenticate();
 initModels(db);
 
-router.get("/hello", async (req, res) => {
-  res.send("Hello World!!");
-});
 
 app.use(process.env.BASE_ROUTE, router);
 app.listen(process.env.PORT);
+
+console.log(`rodando em localhost:${process.env.PORT}${process.env.BASE_ROUTE}/`)
