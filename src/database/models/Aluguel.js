@@ -1,8 +1,8 @@
 import { Model, DataTypes } from "sequelize";
 
-export class Devolucao extends Model {
+export class Aluguel extends Model {
   static initModel(sequelize) {
-    Devolucao.init(
+    Aluguel.init(
       {
         id: {
           allowNull: false,
@@ -37,14 +37,20 @@ export class Devolucao extends Model {
             model: "Ciclista",
             key: "id",
           },
+          onUpdate: "CASCADE",
+        },
+        trancaInicio: {
+          allowNull: false,
+          type: DataTypes.INTEGER,
         },
       },
       {
         sequelize: sequelize,
         timestamps: false,
+        freezeTableName: true,
       }
     );
 
-    return Devolucao;
+    return Aluguel;
   }
 }

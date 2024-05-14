@@ -1,8 +1,8 @@
-import { Model, DataTypes, UUIDV4 } from "sequelize";
+import { Model, DataTypes } from "sequelize";
 
-export class Funcionario extends Model {
+export class Ciclista extends Model {
   static initModel(sequelize) {
-    Funcionario.init(
+    Ciclista.init(
       {
         id: {
           allowNull: false,
@@ -14,39 +14,47 @@ export class Funcionario extends Model {
           allowNull: false,
           type: DataTypes.STRING,
         },
-        nascimento: {
-          allowNull: false,
-          type: DataTypes.DATEONLY,
-        },
-        funcao: {
-          allowNull: false,
-          type: DataTypes.STRING,
-        },
-        cpf: {
-          allowNull: false,
-          type: DataTypes.CHAR(11),
-        },
         email: {
           allowNull: false,
           type: DataTypes.STRING,
           unique: true,
         },
+        status: {
+          allowNull: false,
+          defaultValue: "AGUARDANDO_CONFIRMACAO",
+          type: DataTypes.ENUM("ATIVO", "INATIVO", "AGUARDANDO_CONFIRMACAO"),
+        },
+        nascimento: {
+          allowNull: false,
+          type: DataTypes.DATEONLY,
+        },
+        cpf: {
+          allowNull: false,
+          type: DataTypes.CHAR(11),
+        },
+        nacionalidade: {
+          allowNull: false,
+          type: DataTypes.ENUM("BRASILEIRO", "ESTRANGEIRO"),
+        },
+        urlFotoDocumento: {
+          allowNull: false,
+          type: DataTypes.STRING,
+        },
         senha: {
           allowNull: false,
           type: DataTypes.STRING,
         },
-        matricula: {
-          allowNull: false,
-          type: DataTypes.INTEGER,
-          defaultValue: UUIDV4(),
+        passaporte: {
+          type: DataTypes.JSON(),
         },
       },
       {
         sequelize: sequelize,
         timestamps: false,
+        freezeTableName: true,
       }
     );
 
-    return Funcionario;
+    return Ciclista;
   }
 }
