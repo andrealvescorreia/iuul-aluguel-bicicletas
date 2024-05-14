@@ -2,10 +2,14 @@ import 'dotenv/config'
 
 import express from 'express';
 import { db } from "./database/db.js"
-import { initModels } from "./models/index.js";
-import router from './router.js';
+import { initModels } from "./database/models/index.js";
+import router from "./router.js";
 
 const app = express();
+
+//parse do body (string para JSON)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 await db.authenticate();
 initModels(db);
