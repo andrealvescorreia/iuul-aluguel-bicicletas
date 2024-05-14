@@ -11,8 +11,7 @@ router.get("/hello", async (req, res) => {
 });
 
 // rotas Ciclista
-router.get('/ciclista/existeEmail', ciclistaController.existeEmail)
-router.get('/ciclista/existeEmail/:email', ciclistaController.existeEmail)
+router.get('/ciclista/existeEmail/:email?', ciclistaController.existeEmail)
 
 //rotas CartaoDeCredito
 router.get('/cartaoDeCredito/:idCiclista?', cartaoController.obterCartao)

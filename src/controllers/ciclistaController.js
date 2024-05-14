@@ -8,7 +8,7 @@ export async function existeEmail(req, res) {
   try {
     if (!req.params.email) {
       res.status(400);
-      res.send({
+      return res.send({
         codigo: OperationCode.EMAIL_REQUIRED,
         mensagem: view.messages.get(OperationCode.EMAIL_REQUIRED),
       });
