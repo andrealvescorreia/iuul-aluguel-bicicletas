@@ -53,6 +53,8 @@ export async function criaCiclista(req, res) {
         })
       })
 
+      // caso não foi possível registrar o cartão, deleta o cadastro do ciclista do sistema
+      await ciclistaRepository.deleteById(resCriacaoCiclista.success.id)
       res.status(422);
       return res.send(erros);
     }

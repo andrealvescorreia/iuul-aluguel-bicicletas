@@ -32,4 +32,9 @@ export default class CiclistaRepository {
     });
     return ciclistaComEmail;
   }
+
+  async deleteById(id) {
+    const ciclista = await Ciclista.findByPk(id);
+    await ciclista.destroy();
+  }
 }
