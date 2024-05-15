@@ -16,9 +16,9 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      nascimento: {
+      idade: {
         allowNull: false,
-        type: DataTypes.DATEONLY,
+        type: DataTypes.INTEGER,
       },
       funcao: {
         allowNull: false,
@@ -39,7 +39,7 @@ module.exports = {
       },
       matricula: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         defaultValue: UUIDV4(),
       },
     });

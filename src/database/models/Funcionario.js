@@ -14,9 +14,9 @@ export class Funcionario extends Model {
           allowNull: false,
           type: DataTypes.STRING,
         },
-        nascimento: {
+        idade: {
           allowNull: false,
-          type: DataTypes.DATEONLY,
+          type: DataTypes.INTEGER,
         },
         funcao: {
           allowNull: false,
@@ -37,7 +37,7 @@ export class Funcionario extends Model {
         },
         matricula: {
           allowNull: false,
-          type: DataTypes.INTEGER,
+          type: DataTypes.UUID,
           defaultValue: UUIDV4(),
         },
       },
