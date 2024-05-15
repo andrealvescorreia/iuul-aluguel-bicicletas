@@ -38,7 +38,10 @@ export async function criaCiclista(req, res) {
       return res.send(erros);
     }
 
-    const resCriacaoCartao = await cartaoModel.create(dadosCiclista.meioDePagamento)
+    const resCriacaoCartao = await cartaoModel.create({
+      ...dadosCiclista.meioDePagamento,
+      ciclista: resCriacaoCiclista.success.id
+    })
     if (resCriacaoCartao.failure) {
       let erros = [];
       resCriacaoCartao.failure.forEach(erro => {
