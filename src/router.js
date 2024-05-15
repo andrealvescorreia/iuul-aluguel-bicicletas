@@ -3,6 +3,7 @@ const router = express.Router();
 
 import ciclistaController from './controllers/ciclistaController.js'
 import cartaoController from './controllers/cartaoController.js';
+import aluguelController from './controllers/aluguelController.js'
 
 
 
@@ -16,5 +17,7 @@ router.get('/ciclista/existeEmail/:email?', ciclistaController.existeEmail)
 //rotas CartaoDeCredito
 router.get('/cartaoDeCredito/:idCiclista?', cartaoController.obterCartao)
 router.put('/cartaoDeCredito/:idCiclista?', cartaoController.atualizarCartao)
+
+router.post('/aluguel', aluguelController.realizarAluguel)
 
 export default router;
