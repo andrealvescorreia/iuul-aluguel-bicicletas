@@ -7,5 +7,7 @@ export default class ErrorOperationCodes {
   static get EMAIL_ALREADY_IN_USE() { return 25 }
   static get INVALID_CARTAO_DE_CREDITO() { return 26 }
   static get CYCLIST_NOT_FOUND() { return 27 }
+  static get COULD_NOT_SEND_EMAIL() { return 28 }
+  static get BAD_REQUEST() { return 404 }
   static get INVALID_DATA() { return 422 }
 }

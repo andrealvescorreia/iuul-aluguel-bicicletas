@@ -10,19 +10,20 @@ import CartaoDeCreditoRepository from "../repositories/CartaoDeCreditoRepository
 const view = new ErrorsView();
 const ciclistaRepository = new CiclistaRepository();
 const cartaoRepository = new CartaoDeCreditoRepository();
-const ciclistaModel = new Ciclista(ciclistaRepository);
 
-// !Mock temporário, até que o microserviço Externo esteja pronto 
-// e com a rota /validaCartaoDeCredito funcionando!
+// !Mock temporário, até que o microserviço Externo esteja pronto
+const sendEmailMock = () => { return { success: true } }
 const isCartaoValidMock = () => true
+
+const ciclistaModel = new Ciclista(ciclistaRepository, sendEmailMock);
 const cartaoModel = new CartaoDeCredito(cartaoRepository, isCartaoValidMock);
+
 
 export async function criaCiclista(req, res) {
   try {
     const dadosCiclista = req.body;
 
     const resCriacaoCiclista = await ciclistaModel.create(dadosCiclista.ciclista)
-    console.log(resCriacaoCiclista)
     if (resCriacaoCiclista.failure) {
       let erros = [];
       resCriacaoCiclista.failure.forEach(erro => {
@@ -38,7 +39,6 @@ export async function criaCiclista(req, res) {
     }
 
     const resCriacaoCartao = await cartaoModel.create(dadosCiclista.meioDePagamento)
-    console.log(resCriacaoCartao)
     if (resCriacaoCartao.failure) {
       let erros = [];
       resCriacaoCartao.failure.forEach(erro => {
@@ -56,10 +56,10 @@ export async function criaCiclista(req, res) {
     res.status(201);
     return res.send(resCriacaoCiclista.success);
   } catch (e) {
-    res.status(400);
+    res.status(404);
     return res.send({
-      //codigo: OperationCode.EMAIL_REQUIRED,
-      mensagem: e,
+      codigo: OperationCode.BAD_REQUEST,
+      mensagem: view.messages.get(erro.code),
     });
   }
 

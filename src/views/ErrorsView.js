@@ -21,8 +21,10 @@ export default class CartaoView {
 
     this.#messages.set(OperationErrors.MISSING_REQUIRED_FIELD, "faltando");
     this.#messages.set(OperationErrors.INVALID_FIELD, "inválido");
-    this.#messages.set(OperationErrors.EMAIL_ALREADY_IN_USE, "E-mail indisponível");
+    this.#messages.set(OperationErrors.EMAIL_ALREADY_IN_USE, "E-mail já em uso");
     this.#messages.set(OperationErrors.INVALID_CARTAO_DE_CREDITO, "Cartão de crédito inválido");
     this.#messages.set(OperationErrors.CYCLIST_NOT_FOUND, "Ciclista não encontrado");
+    this.#messages.set(OperationErrors.BAD_REQUEST, "requisição má formatada");
+    this.#messages.set(OperationErrors.COULD_NOT_SEND_EMAIL, "não foi possível enviar o email");
   }
 }

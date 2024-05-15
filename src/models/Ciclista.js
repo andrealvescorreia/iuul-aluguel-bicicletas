@@ -4,8 +4,11 @@ import isEmail from 'validator/lib/isEmail.js';
 
 export default class Ciclista {
   ciclistaRepository;
-  constructor(ciclistaRepository) {
+  sendEmail;
+
+  constructor(ciclistaRepository, sendEmail) {
     this.ciclistaRepository = ciclistaRepository
+    this.sendEmail = sendEmail
   }
 
   #camposFaltando(ciclista) {
@@ -108,6 +111,19 @@ export default class Ciclista {
       errors.push({
         code: ErrorOperationCodes.INVALID_CYCLIST
       })
+    }
+
+    const resEnvioEmail = await this.sendEmail({
+      email: ciclista.email,
+      assunto: 'Ativação da conta',
+      mensagem: 'Olá, voce se cadastrou no sistema Bicicletário. Para ativar a sua conta, acesse o link a seguir: https://ativar'
+    })
+
+    if (resEnvioEmail.failure) {
+      errors.push({
+        code: ErrorOperationCodes.COULD_NOT_SEND_EMAIL
+      })
+      await this.ciclistaRepository.deleteById(ciclistaCriado.id);
     }
 
     // Retorna o objeto Ciclista ou a lista de erros
