@@ -13,6 +13,7 @@ router.get("/hello", async (req, res) => {
 // rotas Ciclista
 router.get('/ciclista/existeEmail/:email?', ciclistaController.existeEmail)
 router.post('/ciclista', ciclistaController.criaCiclista)
+router.get('/ciclista/:idCiclista?', ciclistaController.encontraCiclista)
 
 //rotas CartaoDeCredito
 router.get('/cartaoDeCredito/:idCiclista?', cartaoController.obterCartao)

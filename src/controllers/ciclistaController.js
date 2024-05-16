@@ -70,6 +70,27 @@ export async function criaCiclista(req, res) {
 
 }
 
+export async function encontraCiclista(req, res) {
+  if (!req.params.idCiclista) {
+    res.status(400);
+    return res.send({
+      codigo: OperationCode.MISSING_REQUIRED_FIELD,
+      mensagem: 'idCiclista ' + view.messages.get(OperationCode.MISSING_REQUIRED_FIELD),
+    });
+  }
+
+  const ciclista = await ciclistaRepository.getById(req.params.idCiclista)
+  if (!ciclista) {
+    res.status(404);
+    return res.send({
+      codigo: OperationCode.NOT_FOUND,
+      mensagem: view.messages.get(OperationCode.NOT_FOUND),
+    });
+  }
+  res.status(200);
+  return res.send({ ciclista });
+}
+
 export async function existeEmail(req, res) {
   try {
     if (!req.params.email) {
@@ -98,4 +119,4 @@ export async function existeEmail(req, res) {
 }
 
 // ! lembre de exportar todas as funcoes!
-export default { existeEmail, criaCiclista };
+export default { existeEmail, criaCiclista, encontraCiclista };

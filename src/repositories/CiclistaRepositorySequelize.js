@@ -37,4 +37,9 @@ export default class CiclistaRepository {
     const ciclista = await Ciclista.findByPk(id);
     await ciclista.destroy();
   }
+
+  async getById(id) {
+    const ciclista = await Ciclista.findByPk(id);
+    return ciclista;
+  }
 }
